@@ -7,10 +7,11 @@ namespace PlaytomicTest
 	{
 		public static void Lookup(Action done) 
 		{
+			const string section = "PTestGeoIP.Lookup";
+			Console.WriteLine (section);
+
 			Playtomic.GeoIP.Lookup ((geo, r) => {
 				geo = geo ?? new PlayerCountry();
-
-				const string section = "PTestGeoIP.Lookup";
 				AssertTrue(section, "Request succeeded", r.success);
 				AssertEquals(section, "No errorcode", r.errorcode, 0);
 				AssertFalse(section, "Has country name", string.IsNullOrEmpty (geo.name));

@@ -7,10 +7,11 @@ namespace PlaytomicTest
 
 		public static void All(Action done) 
 		{
+			const string section = "PTestGameVars.All";
+			Console.WriteLine (section);
+
 			Playtomic.GameVars.Load ((gv, r) => {
 				gv = gv ?? new Hashtable();
-
-				const string section = "PTestGameVars.All";
 				AssertTrue(section, "Request succeeded", r.success);
 				AssertEquals(section, "No errorcode", r.errorcode, 0);
 				AssertTrue(section, "Has known testvar1", gv.ContainsKey("testvar1"));
@@ -24,10 +25,11 @@ namespace PlaytomicTest
 		}
 
 		public static void Single(Action done) {
+			const string section = "PTestGameVars.LoadSingle";
+			Console.WriteLine (section);
+
 			Playtomic.GameVars.LoadSingle ("testvar1", (gv, r) => {
 				gv = gv ?? new Hashtable();
-
-				const string section = "PTestGameVars.LoadSingle";
 				AssertTrue(section, "Request succeeded", r.success);
 				AssertEquals(section, "No errorcode", r.errorcode, 0);
 				AssertTrue(section, "Has testvar1", gv.ContainsKey("testvar1"));

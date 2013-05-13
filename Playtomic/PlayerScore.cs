@@ -101,7 +101,13 @@ namespace Playtomic
 		{
 			get { return ContainsKey ("allowduplicates") && (bool) this["allowduplicates"]; }
 			set { SetProperty("allowduplicates", value); }
-		}	
+		}
+
+		public long perpage
+		{
+			get { return GetLong ("perpage"); }
+			set { SetProperty ("perpage", value); }
+		}
 
 		private long GetLong(string s) 
 		{

@@ -24,6 +24,8 @@ namespace PlaytomicTest
 			        PTestLeaderboards.HighScores,
 			        PTestLeaderboards.LowScores,
 			        PTestLeaderboards.AllScores,
+					PTestLeaderboards.FriendsScores,
+					PTestLeaderboards.OwnScores,
 			        PTestPlayerLevels.Create,
 			        PTestPlayerLevels.List,
 			        PTestPlayerLevels.Load,

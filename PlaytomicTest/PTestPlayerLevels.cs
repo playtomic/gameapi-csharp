@@ -10,8 +10,11 @@ namespace PlaytomicTest
 	{
 		public static int rnd;
 		
-		public static void Create(Action done) {
-			
+		public static void Create(Action done) 
+		{
+			const string section = "PTestPlayerLevels.Create";
+			Console.WriteLine (section);
+
 			var level = new PlayerLevel {
 				name = "create level" + rnd,
 				playername = "ben" + rnd,
@@ -23,9 +26,7 @@ namespace PlaytomicTest
 			};
 			
 			PlayerLevels.Save (level, (l, r) => {
-				const string section = "PTestPlayerLevels.Create";
 				l = l ?? new PlayerLevel();
-
 				AssertTrue(section + "#1", "Request succeeded", r.success);
 				AssertEquals(section + "#1", "No errorcode", r.errorcode, 0);
 				AssertTrue(section + "#1", "Returned level is not null", l.Keys.Count > 0);
@@ -42,6 +43,9 @@ namespace PlaytomicTest
 		
 		public static void List(Action done)
 		{
+			const string section = "PTestPlayerLevels.List";
+			Console.WriteLine (section);
+
 			var listoptions = new Hashtable { 
 				{"page", 1},
 				{"perpage", 10},
@@ -53,9 +57,7 @@ namespace PlaytomicTest
 			};
 			
 			PlayerLevels.List (listoptions, (levels, numlevels, r) => {
-				const string section = "PTestPlayerLevels.List";
 				levels = levels ?? new List<PlayerLevel>();
-
 				AssertTrue(section + "#1", "Request succeeded", r.success);
 				AssertEquals(section + "#1", "No errorcode", r.errorcode, 0);
 				AssertTrue(section + "#1", "Received levels", levels.Count > 0);
@@ -93,6 +95,9 @@ namespace PlaytomicTest
 		
 		public static void Rate(Action done)
 		{
+			const string section = "TestPlayerLevels.Rate";
+			Console.WriteLine (section);
+
 			var level = new PlayerLevel {
 				name = "rate " + rnd,
 				playername = "ben" + rnd,
@@ -104,9 +109,6 @@ namespace PlaytomicTest
 			};
 			
 			PlayerLevels.Save(level, (l, r) => {
-
-				const string section = "TestPlayerLevels.Rate";
-
 				l = l ?? new PlayerLevel();
 				AssertTrue(section + "#1", "Request succeeded", r.success);
 				AssertEquals(section + "#1", "No errorcode", r.errorcode, 0);
@@ -137,6 +139,9 @@ namespace PlaytomicTest
 		
 		public static void Load(Action done)
 		{
+			const string section = "TestPlayerLevels.Load";
+			Console.WriteLine (section);
+
 			var level = new PlayerLevel {
 				name = "sample loading level " + rnd,
 				playername = "ben" + rnd,
@@ -148,9 +153,6 @@ namespace PlaytomicTest
 			};
 			
 			PlayerLevels.Save (level, (l, r) => {
-
-				const string section = "TestPlayerLevels.Load";
-
 				AssertTrue(section + "#1", "Request succeeded", r.success);
 				AssertEquals(section + "#1", "No errorcode", r.errorcode, 0);
 				AssertTrue(section + "#1", "Name is correct", l.ContainsKey("levelid"));
