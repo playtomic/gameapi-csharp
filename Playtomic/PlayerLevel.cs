@@ -31,10 +31,10 @@ namespace Playtomic
 			set { SetProperty ("levelid", value); }
 		}
 		
-		public string playersource
+		public string source
 		{
-			get { return GetString ("playersource"); }
-			set { SetProperty ("playersource", value); }
+			get { return GetString ("source"); }
+			set { SetProperty ("source", value); }
 		}
 		
 		public string playerid
@@ -83,17 +83,17 @@ namespace Playtomic
 			get { return GetLong ("score"); }
 			set { SetProperty ("score", value); }
 		}
-		
-		public string sdate 
-		{
-			get { return GetString ("sdate"); }
-			set { SetProperty ("sdate", value); }
-		}
-		
+
 		public DateTime date
 		{
 			get { return ContainsKey ("date") ? (DateTime) this["date"] : DateTime.Now; }
 			set { SetProperty ("date", value); }
+		}
+
+		public string rdate 
+		{
+			get { return GetString ("rdate"); }
+			set { SetProperty ("rdate", value); }
 		}
 		
 		public Hashtable fields
