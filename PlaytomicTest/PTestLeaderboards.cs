@@ -12,6 +12,9 @@ namespace PlaytomicTest
 		
 		public static void FirstScore(Action done) 
 		{		
+			const string section = "TestLeaderboards.FirstScore";
+			Console.WriteLine (section);
+
 			var score = new PlayerScore {
 				table = "scores" + rnd,
 				name = "person1",
@@ -23,7 +26,6 @@ namespace PlaytomicTest
 			};
 			
 			Leaderboards.Save (score, r => {
-				const string section = "TestLeaderboards.FirstScore";
 				AssertTrue(section + "#1", "Request succeeded", r.success);
 				AssertEquals(section + "#1", "No errorcode", r.errorcode, 0);
 
@@ -58,6 +60,9 @@ namespace PlaytomicTest
 
 		public static void SecondScore(Action done) 
 		{		
+			const string section = "TestLeaderboards.SecondScore";
+			Console.WriteLine (section);
+
 			var score = new PlayerScore {
 				table = "scores" + rnd,
 				name = "person2",
@@ -71,7 +76,6 @@ namespace PlaytomicTest
 			
 			Thread.Sleep (1000);
 			Leaderboards.Save (score, r => {
-				const string section = "TestLeaderboards.SecondScore";
 				AssertTrue(section + "#3", "Request succeeded", r.success);
 				AssertEquals(section + "#3", "No errorcode", r.errorcode, 0);
 				done();
@@ -80,6 +84,9 @@ namespace PlaytomicTest
 		
 		public static void HighScores(Action done)
 		{
+			const string section = "TestLeaderboards.Highscores";
+			Console.WriteLine (section);
+
 			var options = new Hashtable
 			{
 				{"table", "scores" + rnd},
@@ -92,7 +99,6 @@ namespace PlaytomicTest
 			};
 			
 			Leaderboards.List (options, (scores, numscores, r) => {
-				const string section = "TestLeaderboards.Highscores";
 				scores = scores ?? new List<PlayerScore>();
 
 				AssertTrue(section, "Request succeeded", r.success);
@@ -112,6 +118,9 @@ namespace PlaytomicTest
 		
 		public static void LowScores(Action done)
 		{
+			const string section = "TestLeaderboards.LowScores";
+			Console.WriteLine (section);
+
 			var options = new Hashtable
 			{
 				{"table", "scores" + rnd},
@@ -125,9 +134,7 @@ namespace PlaytomicTest
 			};
 			
 			Leaderboards.List (options, (scores, numscores, r) => {
-				const string section = "TestLeaderboards.LowScores";
 				scores = scores ?? new List<PlayerScore>();
-
 				AssertTrue(section, "Request succeeded", r.success);
 				AssertEquals(section, "No errorcode", r.errorcode, 0);
 				AssertTrue(section, "Received scores", scores.Count == 2);
@@ -145,6 +152,9 @@ namespace PlaytomicTest
 		
 		public static void AllScores(Action done)
 		{
+			const string section = "TestLeaderboards.AllScores";
+			Console.WriteLine (section);
+
 			var options = new Hashtable
 			{
 				{"table", "scores" + rnd},
@@ -153,9 +163,7 @@ namespace PlaytomicTest
 			};
 			
 			Leaderboards.List (options, (scores, numscores, r) => {
-				const string section = "TestLeaderboards.AllScores";
 				scores = scores ?? new List<PlayerScore>();
-
 				AssertTrue(section, "Request succeeded", r.success);
 				AssertEquals(section, "No errorcode", r.errorcode, 0);
 				AssertTrue(section, "Received scores", scores.Count > 0);
@@ -167,6 +175,116 @@ namespace PlaytomicTest
 					AssertTrue(section, "First score is newer or equal to second forced failure", false);
 				}
 
+				done();
+			});
+		}
+
+		public static void FriendsScores(Action done)
+		{
+			const string section = "TestLeaderboards.FriendsScores";
+			Console.WriteLine (section);
+
+			var playerids = new [] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+			var points = 0;
+
+			for(var i = 0; i < 10; i++)
+			{
+				Thread.Sleep (500);
+				points += 1000;
+				var playerid = playerids [i];
+
+				var score =  new PlayerScore {
+					name = "playerid" + playerid,
+					playerid = playerid,
+					table = "friends" + rnd,
+					points = points,
+					highest = true,
+					fields = {
+						{"rnd", rnd}
+					}
+				};
+
+				Leaderboards.Save (score, r => {});
+			}
+
+			var list = new Hashtable {
+				{"table", "friends" + rnd},
+				{"perpage", 3},
+				{"friendslist", new ArrayList(new [] {"1", "2", "3" })}
+			};
+
+			Leaderboards.List(list, (scores, numscores, r) => {
+				scores = scores ?? new List<PlayerScore>();
+				AssertTrue(section, "Request succeeded", r.success);
+				AssertEquals(section, "No errorcode", r.errorcode, 0);
+				AssertTrue(section, "Received 3 scores", scores.Count == 3);
+				AssertTrue(section, "Received numscores 3", numscores == 3);
+				AssertTrue(section, "Player id #1", scores[0].playerid == "3");
+				AssertTrue(section, "Player id #2", scores[1].playerid == "2");
+				AssertTrue(section, "Player id #3", scores[2].playerid == "1");
+				done();
+			});
+		}
+
+		public static void OwnScores(Action done)
+		{
+			const string section = "TestLeaderboards.OwnScores";
+			Console.WriteLine (section);
+
+			var points = 0;
+			var saved = 0;
+
+			for(var i=0; i<9; i++)
+			{			
+				Thread.Sleep (500);
+				points += 1000;
+				saved++;
+
+				var score=  new PlayerScore {
+					name = "test account",
+					playerid = "test@testuri.com",
+					table = "personal" + rnd,
+					points = points,
+					highest = true,
+					allowduplicates = true,
+					fields = {
+						{"rnd", rnd}
+					}
+				};
+
+				Leaderboards.Save (score, r => {});
+			}
+
+			var finalscore = new PlayerScore {
+				name = "test account",
+				playerid = "test@testuri.com",
+				table = "personal" + rnd,
+				points = 3000,
+				highest = true,
+				allowduplicates = true,
+				fields = {
+					{"rnd", rnd}
+				},
+				perpage = 5
+			};
+
+			Leaderboards.SaveAndList(finalscore, (scores, numscores, r) => {
+				scores = scores ?? new List<PlayerScore>();
+
+				AssertTrue(section, "Request succeeded", r.success);
+				AssertEquals(section, "No errorcode", r.errorcode, 0);
+				AssertTrue(section, "Received 5 scores", scores.Count == 5);
+				AssertTrue(section, "Received numscores 10", numscores == 10);
+				AssertTrue(section, "Score 1 ranked 6", scores[0].rank == 6);
+				AssertTrue(section, "Score 2 ranked 7", scores[1].rank == 7);
+				AssertTrue(section, "Score 3 ranked 8", scores[2].rank == 8);
+				AssertTrue(section, "Score 4 ranked 9", scores[3].rank == 9);
+				AssertTrue(section, "Score 5 ranked 10", scores[4].rank == 10);
+				AssertTrue(section, "Score 1 points", scores[0].points == 4000);
+				AssertTrue(section, "Score 2 points", scores[1].points == 3000);
+				AssertTrue(section, "Score 3 points", scores[2].points == 3000);
+				AssertTrue(section, "Score 4 points", scores[3].points == 2000);
+				AssertTrue(section, "Score 5 points", scores[4].points == 1000);
 				done();
 			});
 		}
