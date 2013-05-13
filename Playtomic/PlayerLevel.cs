@@ -64,24 +64,25 @@ namespace Playtomic
 		public long votes 
 		{
 			get { return GetLong("votes"); }
-			set { SetProperty ("votes", value); }
 		}
-		
-		public long plays
-		{
-			get { return GetLong ("plays"); }
-			set { SetProperty ("plays", value); }
-		}
-		
-		public double rating
-		{
-			get { return score / votes; }
-		}
-		
+
 		public long score 
 		{
 			get { return GetLong ("score"); }
-			set { SetProperty ("score", value); }
+		}
+		
+		public double rating 
+		{
+			get { 
+				var s = score;
+				var v = votes;
+
+				if (s == 0 || v == 0) {
+					return 0;
+				}
+
+				return s / v;
+			}
 		}
 
 		public DateTime date
