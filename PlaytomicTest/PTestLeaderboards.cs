@@ -76,8 +76,8 @@ namespace PlaytomicTest
 			
 			Thread.Sleep (1000);
 			Leaderboards.Save (score, r => {
-				AssertTrue(section + "#3", "Request succeeded", r.success);
-				AssertEquals(section + "#3", "No errorcode", r.errorcode, 0);
+				AssertTrue(section, "Request succeeded", r.success);
+				AssertEquals(section, "No errorcode", r.errorcode, 0);
 				done();
 			});
 		}
