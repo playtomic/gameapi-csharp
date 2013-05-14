@@ -232,13 +232,11 @@ namespace PlaytomicTest
 			Console.WriteLine (section);
 
 			var points = 0;
-			var saved = 0;
 
 			for(var i=0; i<9; i++)
 			{			
 				Thread.Sleep (500);
 				points += 1000;
-				saved++;
 
 				var score=  new PlayerScore {
 					name = "test account",
