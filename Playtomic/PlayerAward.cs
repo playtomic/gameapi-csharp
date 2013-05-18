@@ -41,12 +41,6 @@ namespace Playtomic
 			set { SetProperty ("playername", value); }
 		}
 
-		public string achievementid
-		{
-			get { return GetString ("achievementid"); }
-			set { SetProperty ("achievementid", value); }
-		}
-
 		public PlayerAchievement awarded
 		{
 			get { return ContainsKey ("awarded") ? (PlayerAchievement) this["awarded"] : null; }
