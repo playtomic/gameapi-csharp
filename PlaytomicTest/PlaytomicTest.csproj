@@ -40,6 +40,7 @@
     <Compile Include="PTestGeoIP.cs" />
     <Compile Include="PTestGameVars.cs" />
     <Compile Include="PTest.cs" />
+    <Compile Include="PTestAchievements.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

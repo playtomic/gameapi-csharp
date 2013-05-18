@@ -42,6 +42,9 @@
     <Compile Include="PlayerLevels.cs" />
     <Compile Include="PlayerScore.cs" />
     <Compile Include="PResponse.cs" />
+    <Compile Include="Achievements.cs" />
+    <Compile Include="PlayerAchievement.cs" />
+    <Compile Include="PlayerAward.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
