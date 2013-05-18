@@ -12,7 +12,7 @@ namespace PlaytomicTest
 		{
 			Initialize.SetCredentials("testpublickey", "testprivatekey", "http://127.0.0.1:3000");
 			PTest.Setup ();	
-			PTestLeaderboards.rnd = PTestPlayerLevels.rnd = RND();
+			PTestLeaderboards.rnd = PTestPlayerLevels.rnd = PTestAchievements.rnd = RND();
 			
 			_tests = new List<Action<Action>>
 			    {
@@ -29,7 +29,15 @@ namespace PlaytomicTest
 			        PTestPlayerLevels.Create,
 			        PTestPlayerLevels.List,
 			        PTestPlayerLevels.Load,
-			        PTestPlayerLevels.Rate
+			        PTestPlayerLevels.Rate,
+					PTestAchievements.List,
+					PTestAchievements.ListWithFriends,
+					PTestAchievements.ListWithPlayer,
+					PTestAchievements.ListWithPlayerAndFriends,
+					PTestAchievements.Stream,
+					PTestAchievements.StreamWithFriends,
+					PTestAchievements.StreamWithPlayerAndFriends,
+					PTestAchievements.Save
 			    };
 		    Next ();
 		}
@@ -43,7 +51,13 @@ namespace PlaytomicTest
 			
 			var action = _tests[0];
 			_tests.RemoveAt(0);
-			action(Next);
+
+			try { 
+				action(Next);
+			} catch(Exception err) {
+				Console.WriteLine (err);
+				Next ();
+			}
 		}
 		
 		private static int RND()
