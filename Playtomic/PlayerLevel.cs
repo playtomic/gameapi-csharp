@@ -88,13 +88,12 @@ namespace Playtomic
 		public DateTime date
 		{
 			get { return ContainsKey ("date") ? (DateTime) this["date"] : DateTime.Now; }
-			set { SetProperty ("date", value); }
+			private set { SetProperty ("date", value); }
 		}
 
 		public string rdate 
 		{
 			get { return GetString ("rdate"); }
-			set { SetProperty ("rdate", value); }
 		}
 		
 		public Hashtable fields
@@ -105,7 +104,7 @@ namespace Playtomic
 			
 		private long GetLong(string s) 
 		{
-			return ContainsKey (s) ? (Int64) this[s] : 0L;
+			return ContainsKey (s) ? long.Parse(this[s].ToString ()) : 0L;
 		}
 		
 		private string GetString(string s) 

@@ -64,25 +64,18 @@ namespace Playtomic
 		public DateTime date
 		{
 			get { return ContainsKey ("date") ? (DateTime) this["date"] : DateTime.Now; }
-			set { SetProperty ("date", value); }
+			private set { SetProperty ("date", value); }
 		}
 
 		public string rdate 
 		{
 			get { return GetString ("rdate"); }
-			set { SetProperty ("rdate", value); }
 		}
 
 		public Hashtable fields
 		{
 			get { return ContainsKey ("fields") ? (Hashtable)this["fields"] : new Hashtable();	}
 			set { SetProperty ("fields", value); }
-		}
-		
-		public bool submittedorbest
-		{
-			get { return ContainsKey ("submittedorbest"); }
-			set { SetProperty("submittedorbest", value); }
 		}
 
 		public bool highest
