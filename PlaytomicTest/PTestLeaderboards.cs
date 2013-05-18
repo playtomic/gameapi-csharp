@@ -17,7 +17,7 @@ namespace PlaytomicTest
 
 			var score = new PlayerScore {
 				table = "scores" + rnd,
-				name = "person1",
+				playername = "person1",
 				points = 10000,
 				highest =  true,
 				fields = new Hashtable { 
@@ -65,7 +65,7 @@ namespace PlaytomicTest
 
 			var score = new PlayerScore {
 				table = "scores" + rnd,
-				name = "person2",
+				playername = "person2",
 				points = 20000,
 				allowduplicates = true,
 				highest =  true,
@@ -218,7 +218,7 @@ namespace PlaytomicTest
 			playerids.RemoveAt (0);
 
 			var score =  new PlayerScore {
-				name = "playerid" + playerid,
+				playername = "playerid" + playerid,
 				playerid = playerid,
 				table = "friends" + rnd,
 				points = points,
@@ -247,7 +247,7 @@ namespace PlaytomicTest
 			OwnScoresLoop (0, 0, () => {
 
 				var finalscore = new PlayerScore {
-					name = "test account",
+					playername = "test account",
 					playerid = "test@testuri.com",
 					table = "personal" + rnd,
 					points = 3000,
@@ -288,7 +288,7 @@ namespace PlaytomicTest
 			count++;
 
 			var score = new PlayerScore {
-				name = "test account",
+				playername = "test account",
 				playerid = "test@testuri.com",
 				table = "personal" + rnd,
 				points = points,
