@@ -43,7 +43,7 @@ namespace Playtomic
 				if(!string.IsNullOrEmpty(overridemessage))
 					return overridemessage;
 				
-				if(success || errorcode == 0)
+				if(errorcode == 0)
 					return "Nothing went wrong!";
 				
 				switch(errorcode)
