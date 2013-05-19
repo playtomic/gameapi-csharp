@@ -70,17 +70,6 @@ namespace Playtomic
 			set { SetProperty ("playername", value); }
 		}
 
-		public DateTime date
-		{
-			get { return ContainsKey ("date") ? (DateTime) this["date"] : DateTime.Now; }
-			private set { SetProperty ("date", value); }
-		}
-
-		public string rdate 
-		{
-			get { return GetString ("rdate"); }
-		}
-
 		public Hashtable fields
 		{
 			get { return ContainsKey ("fields") ? (Hashtable)this["fields"] : new Hashtable();	}
