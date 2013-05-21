@@ -49,32 +49,32 @@ namespace Playtomic
 				switch(errorcode)
 				{
 				case 1:
-					return "General error, this typically means the player is unable to connect to the server.";
+					return "General error, this typically means the player is unable to connect to the server";
 				case 2:
-					return "Invalid game credentials. Make sure you use the right public and private keys.";
+					return "Invalid game credentials. Make sure you use the right public and private keys";
 				case 3:
-					return "Request timed out.";
+					return "Request timed out";
 				case 4:
-					return "Invalid request.";
+					return "Invalid request";
 
 				case 100:
-					return "GeoIP API has been disabled for this game.";
+					return "GeoIP API has been disabled for this game";
 						
 				case 200:
-					return "Leaderboard API has been disabled for this game.";
+					return "Leaderboard API has been disabled for this game";
 				case 201:
-					return "The player's name wasn't provided.";
+					return "The player's name wasn't provided";
 				case 203:
-					return "Player is banned from submitting scores in this game.";
+					return "Player is banned from submitting scores in this game";
 				case 204:
-					return "Score was not saved because it was not the player's best.  You can allow players to have " +
-						"more than one score by specifying allowduplicates=true in your save options.";
+					return "Score was not saved because it was not the player's best, you can allow players to have " +
+						"more than one score by specifying allowduplicates=true in your save options";
 
 				case 300:
-					return "GameVars API has been disabled for this game.";
+					return "GameVars API has been disabled for this game";
 						
 				case 400:
-					return "Level sharing API has been disabled for this game.";
+					return "Level sharing API has been disabled for this game";
 				case 401:
 					return "Invalid rating (must be 1 - 10)";
 				case 402:
@@ -87,7 +87,7 @@ namespace Playtomic
 					return "Level already exists";
 
 				case 500:
-					return "Achievements API has been disabled for this game.";
+					return "Achievements API has been disabled for this game";
 				case 501:
 					return "Missing playerid";
 				case 502:
@@ -97,9 +97,17 @@ namespace Playtomic
 				case 504:
 					return "Invalid achievementid or achievement key";
 				case 505:
-					return "Player already had the achievement.  You can overwrite old achievements with overwrite=true or save each time the player is awarded with allowduplicates=true";
+					return "Player already had the achievement, you can overwrite old achievements with overwrite=true or " +
+						"save each time the player is awarded with allowduplicates=true";
 				case 506:
 					return "Player already had the achievement and it was overwritten or a duplicate was saved successfully";
+
+				case 600:
+					return "Newsletter API has been disabled for this game";
+				case 601:
+					return "MailChimp API Key has not been configured";
+				case 602:
+					return "MailChimp API returned an error";
 				}
 
 				return "Unknown error...";

@@ -45,6 +45,7 @@
     <Compile Include="Achievements.cs" />
     <Compile Include="PlayerAchievement.cs" />
     <Compile Include="PlayerAward.cs" />
+    <Compile Include="Newsletter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

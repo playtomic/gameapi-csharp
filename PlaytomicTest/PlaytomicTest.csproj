@@ -41,6 +41,7 @@
     <Compile Include="PTestGameVars.cs" />
     <Compile Include="PTest.cs" />
     <Compile Include="PTestAchievements.cs" />
+    <Compile Include="PTestNewsletter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

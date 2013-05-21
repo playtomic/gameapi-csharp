@@ -19,6 +19,7 @@ namespace PlaytomicTest
 			        PTestGameVars.All,
 			        PTestGameVars.Single,
 			        PTestGeoIP.Lookup,
+					PTestNewsletter.Subscribe,
 			        PTestLeaderboards.FirstScore,
 			        PTestLeaderboards.SecondScore,
 			        PTestLeaderboards.HighScores,
