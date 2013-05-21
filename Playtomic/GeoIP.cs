@@ -6,7 +6,11 @@ namespace Playtomic
 	{
 		private const string SECTION = "geoip";
 		private const string LOOKUP = "lookup";
-		
+
+		/**
+		 * Performs a GeoIP lookup
+		 * @param	callback	Action<PlayerCountry, PResponse>	Your callback method
+		 */
 		public static void Lookup(Action<PlayerCountry, PResponse> callback)
 		{
 			PRequest.GetResponse (SECTION, LOOKUP, null, response => {
