@@ -103,7 +103,6 @@ namespace PlaytomicTest
 
 				finished();
 			});
-
 		}
 
 		public static void ListWithFriends(Action done) {
@@ -229,7 +228,6 @@ namespace PlaytomicTest
 				AssertTrue(section, "Achievement 4 achievement", achievements[3].awarded.achievement == "Super Mega Achievement #1");					
 				AssertTrue(section, "Achievement 5 person", achievements[4].playername == "ben");
 				AssertTrue(section, "Achievement 5 achievement", achievements[4].awarded.achievement == "Super Mega Achievement #1");
-
 				done();
 			});
 		}
@@ -316,14 +314,14 @@ namespace PlaytomicTest
 				// second save gets rejected
 				Playtomic.Achievements.Save(achievement, r2 => {
 					AssertFalse(section + "#2", "Request failed", r2.success);
-					AssertEquals(section + "#2", "Already had achievement errorcode", r2.errorcode, 506);
+					AssertEquals(section + "#2", "Already had achievement errorcode", r2.errorcode, 505);
 
 					// third save overwrites the first
 					achievement.overwrite = true;
 
 					Playtomic.Achievements.Save(achievement, r3 => {
 						AssertTrue(section + "#3", "Request succeeded", r3.success);
-						AssertEquals(section + "#3", "Already had achievement errorcode", r3.errorcode, 505);
+						AssertEquals(section + "#3", "Already had achievement errorcode", r3.errorcode, 506);
 
 						// fourth saves with allow duplicates
 						achievement.allowduplicates = true;
@@ -331,7 +329,7 @@ namespace PlaytomicTest
 
 						Playtomic.Achievements.Save(achievement, r4 => {
 							AssertTrue(section + "#4", "Request succeeded", r4.success);
-							AssertEquals(section + "#4", "Already had achievement errorcode", r4.errorcode, 505);
+							AssertEquals(section + "#4", "Already had achievement errorcode", r4.errorcode, 506);
 							done();
 						});
 					});
