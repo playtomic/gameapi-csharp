@@ -25,7 +25,31 @@ namespace PlaytomicTest
 			Record(false, section, name, expected, received);
 			return false;
 		}
-		
+
+		public static bool AssertNull(string section, string name, object received)
+		{
+			if (null == received) 
+			{
+				Record (true, section, name, "null", received);
+				return true;
+			}
+
+			Record (false, section, name, "null", received);
+			return false;
+		}
+
+		public static bool AssertNotNull(string section, string name, object received)
+		{
+			if (null != received) 
+			{
+				Record (true, section, name, "null", received);
+				return true;
+			}
+
+			Record (false, section, name, "null", received);
+			return false;
+		}
+
 		public static bool AssertEquals(string section, string name, int expected, int received) {
 			if (expected == received) {
 				Record(true, section, name, expected, received);

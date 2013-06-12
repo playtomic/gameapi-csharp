@@ -1,29 +1,33 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PlaytomicTest/PTestAchievements.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PlaytomicTest/PTestNewsletter.cs">
     <Files>
-      <File FileName="Playtomic/PlayerAchievement.cs" Line="34" Column="4" />
-      <File FileName="PlaytomicTest/PTestAchievements.cs" Line="230" Column="122" />
-      <File FileName="Playtomic/PlayerAward.cs" Line="43" Column="3" />
+      <File FileName="Playtomic/PlayerAchievement.cs" Line="1" Column="1" />
+      <File FileName="PlaytomicTest/PTestAchievements.cs" Line="1" Column="1" />
+      <File FileName="Playtomic/PlayerAward.cs" Line="1" Column="1" />
       <File FileName="PlaytomicTest/PTest.cs" Line="1" Column="1" />
       <File FileName="PlaytomicTest/PTestGameVars.cs" Line="1" Column="1" />
       <File FileName="Playtomic/JSON.cs" Line="1" Column="1" />
-      <File FileName="PlaytomicTest/PTestLeaderboards.cs" Line="291" Column="15" />
-      <File FileName="PlaytomicTest/PTests.cs" Line="33" Column="1" />
+      <File FileName="PlaytomicTest/PTestLeaderboards.cs" Line="1" Column="1" />
+      <File FileName="PlaytomicTest/PTests.cs" Line="1" Column="1" />
       <File FileName="Playtomic/Achievements.cs" Line="1" Column="1" />
-      <File FileName="Playtomic/Leaderboards.cs" Line="65" Column="31" />
-      <File FileName="Playtomic/PlayerScore.cs" Line="31" Column="33" />
+      <File FileName="Playtomic/Leaderboards.cs" Line="1" Column="1" />
+      <File FileName="Playtomic/PlayerScore.cs" Line="1" Column="1" />
       <File FileName="Playtomic/PlayerLevel.cs" Line="1" Column="1" />
       <File FileName="PlaytomicTest/PTestPlayerLevels.cs" Line="1" Column="1" />
-      <File FileName="Playtomic/PResponse.cs" Line="46" Column="8" />
+      <File FileName="Playtomic/PResponse.cs" Line="1" Column="1" />
+      <File FileName="Playtomic/Newsletter.cs" Line="1" Column="1" />
+      <File FileName="Playtomic/GeoIP.cs" Line="1" Column="1" />
+      <File FileName="Playtomic/GameVars.cs" Line="1" Column="1" />
+      <File FileName="PlaytomicTest/PTestNewsletter.cs" Line="35" Column="3" />
+      <File FileName="PlaytomicTest/PTestGeoIP.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Playtomic" expanded="True" />
           <Node name="PlaytomicTest" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="PTestAchievements.cs" selected="True" />
+            <Node name="PTestNewsletter.cs" selected="True" />
           </Node>
         </State>
       </Pad>
